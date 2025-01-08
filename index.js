@@ -44,7 +44,22 @@ function operate(operator, a, b) {
 btns.forEach(btn => {
     btn.addEventListener('click', (e) => {
         const btnValue = btn.getAttribute('data-num');
-        if (btn.classList.contains('btn-num')) {}
-        display.textContent += btn.textContent;
+        if (btn.classList.contains('btn-num')) {
+            currentInput += btnValue;
+            display.textContent = currentInput;
+        }
+        
+        if (btn.classList.contains('btn-oper')) {
+            if (currentInput !== "") {
+                if (prevInput !== "") {
+                prevInput = operate(oper, parseFloat(prevInput), parseFloat(currentInput));
+                display.textContent = prevInput;
+            } else {
+                prevInput = currentInput;
+            }
+        }
+        currentInput = "";
+        oper = btnValue;
+    }
     })
-})
+});
