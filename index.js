@@ -8,6 +8,9 @@ let oper = "";
 
 clearBtn.addEventListener('click', () => {
     display.textContent = "";
+    currentInput = "";
+    prevInput = "";
+    oper = "";
 });
 
 function add(a, b) {
@@ -23,7 +26,7 @@ const multiply = (a, b) => {
 }
 
 const divide = (a, b) => {
-  return b !== 0 ? a / b : "Error";
+  return b === 0 ? "Try again" : a / b;
 }
 
 function operate(operator, a, b) {
@@ -62,4 +65,20 @@ btns.forEach(btn => {
         oper = btnValue;
     }
     })
+});
+
+equalBtn.addEventListener('click', () => {
+    if (prevInput !== "" && currentInput !== "") {
+        const result = operate(oper, parseFloat(prevInput), parseFloat(currentInput));
+        display.textContent = result;
+        currentInput = result;
+        prevInput = "";
+        oper = "";
+
+    } else if (prevInput !== "" && currentInput === "") {
+        display.textContent = prevInput;
+        currentInput = "";
+        prevInput = "";
+        oper = "";
+    }
 });
