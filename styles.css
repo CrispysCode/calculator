@@ -30,4 +30,21 @@
 }
 button {
     flex: 1 25%;
+    font-size: 1.25rem
+}
+
+.btn-num {
+    background-color: rgb(181, 221, 2);
+}
+
+.btn-oper {
+    background-color: rgb(255, 165, 0);
+}
+
+.btn-equal {
+    background-color: rgb(13, 211, 112)
+}
+
+.btn-clear {
+    background-color: rgb(231, 7, 130);
 }
